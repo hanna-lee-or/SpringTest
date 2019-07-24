@@ -83,6 +83,7 @@ public class BoardController {
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String postUpdate(BoardVO vo) throws Exception {
 
+		System.out.println("updateNum : " + vo.getBoardNum());
 		try {
 			service.update(vo);
 		} catch (Exception e) {
@@ -103,9 +104,10 @@ public class BoardController {
 	
 	// 게시물 삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String postDelete(BoardVO vo) throws Exception {
+	public String postDelete(@RequestParam("bno") int bno) throws Exception {
 
-	  service.delete(vo.getBoardNum());
+		System.out.println("deleteNum : " + bno);
+	  service.delete(bno);
 
 	  return "redirect:/board/list";
 	}

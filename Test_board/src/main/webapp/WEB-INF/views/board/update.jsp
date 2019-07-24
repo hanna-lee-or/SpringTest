@@ -10,7 +10,7 @@
 <body>
 
 	<form method="post">
-		<input type="hidden" name="bno" value="${view.boardNum}" />
+		<input type="hidden" name="boardNum" value="${view.boardNum}" />
 
 		<div>
 			<label>제목</label> <input type="text" name="title"
