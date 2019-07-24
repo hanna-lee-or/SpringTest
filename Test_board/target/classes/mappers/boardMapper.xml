@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flipperx.mappers.boardMapper">
+
+<!-- 게시물 작성 -->
+<insert id="write" parameterType="com.flipperx.domain.BoardVO">
+    insert into
+        d_board(title, content, writer)
+            values(#{title}, #{content}, #{writer})
+</insert>
+    
+<!-- 게시물 수정 -->
+<update id="update" parameterType="com.flipperx.domain.BoardVO">
+    update 
+        d_board
+            set
+                title = #{title},
+                content = #{content}
+            where
+                boardNum = #{boardNum}
+</update>
+    
+<!-- 게시물 삭제 -->
+<delete id="delete" parameterType="int">
+    delete from
+        d_board
+            where 
+                boardNum = #{boardNum}
+</delete>
+
+<!-- 게시물 조회 -->
+<select id="view" parameterType="int" resultType="com.flipperx.domain.BoardVO">
+    select
+        boardNum, title, content, writer, regDate, viewCnt, likeCnt, commentCnt, attachCnt
+            from d_board
+        where
+            boardNum = #{boardNum} 
+</select>
+
+<!-- 게시물 목록 -->
+<select id="list" resultType="com.flipperx.domain.BoardVO">
+ 	select
+ 		boardNum, title, content, writer, regDate, viewCnt, likeCnt, commentCnt, attachCnt
+   		from d_board
+</select>
+
+</mapper>
