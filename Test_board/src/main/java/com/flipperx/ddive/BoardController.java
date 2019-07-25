@@ -83,7 +83,6 @@ public class BoardController {
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String postUpdate(BoardVO vo) throws Exception {
 
-		System.out.println("updateNum : " + vo.getBoardNum());
 		try {
 			service.update(vo);
 		} catch (Exception e) {
@@ -106,7 +105,6 @@ public class BoardController {
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String postDelete(@RequestParam("bno") int bno) throws Exception {
 
-		System.out.println("deleteNum : " + bno);
 	  service.delete(bno);
 
 	  return "redirect:/board/list";
